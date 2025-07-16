@@ -1,16 +1,12 @@
 <template lang="">
     <div>
-        <h1>Search {{q}}</h1>
+        <h1>Add post</h1>
         
     </div>
 </template>
 <script>
 export default {
-    data(){
-        return{
-            q : this.$route.query.q ?? "No query"
-        }
-    }
+    
 }
 </script>
 <style lang="">

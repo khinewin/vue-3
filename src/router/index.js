@@ -1,32 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import AboutView from '@/views/AboutView.vue'
-import UserView from "@/views/UserView.vue"
-import SearchView from  '@/views/SearchView.vue'
+import Home from '@/views/Home.vue'
+import AddPost from '@/views/AddPost.vue'
+import AllPosts from '@/views/AllPosts.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+  routes: [   
     {
-      path: '/',
-      name: 'Home',
-      component: HomeView,
+      path: "/",
+      name: "Home", 
+      component: Home
     },
     {
-      path:'/about',
-      name: "About",
-      component: AboutView
+      path: "/posts/add", 
+      name: "AddPost", 
+      component: AddPost
     },{
-      path:"/user/:user_id",//params
-      name: "UserById",
-      component: UserView
-    },
-    {
-      path: "/search",
-      name: "Search", 
-      component:SearchView
+      path: "/posts/all",
+      name: "GetAllPosts", 
+      component: AllPosts
     }
-  
   ],
 })
 
