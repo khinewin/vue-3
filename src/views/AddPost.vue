@@ -1,5 +1,6 @@
 <template lang="">
     <div>
+        <Navbar></Navbar>
         <div v-if="isLoading">Loading...</div>
          <div v-if="isSuccess">The post has been created</div>
         <h1>Add post</h1>
@@ -18,7 +19,11 @@
 </template>
 <script>
     import axios from "axios"
+    import Navbar from "@/views/Navbar.vue"
 export default {
+    components: {
+        Navbar
+    },
     data(){
         return{
             server_addr: "http://192.168.1.4:8000",
