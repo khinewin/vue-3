@@ -18,6 +18,7 @@
                 <td>{{p.content}}</td>
                 <td>{{p.created_at}}</td>
                 <td>
+                    <button type="button" @click="editPost(p.id)">Edit</button>
                     <button type="button" @click="deletePost(p.id)">Delete</button>
                 </td>
             </tr>
@@ -43,6 +44,9 @@ export default {
             this.fetchPosts();
         },
         methods:{
+            editPost(id){
+                this.$router.push({name: "EditPost", params:{id: id}});
+            },
             deletePost(id){
                 let sure=confirm(`Are you sure ? ,This will delete post with id : ${id}`);
                 if(sure){
