@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import AddPost from '@/views/AddPost.vue'
 import AllPosts from '@/views/AllPosts.vue'
 import Edit from '@/views/Edit.vue'
+import Signup from '@/views/Signup.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,10 @@ const router = createRouter({
       path: "/posts/:id/edit",
       name:"EditPost",
       component: Edit,
+    },{
+      path:'/auth/signup',
+      name:"Signup",
+      component: Signup
     }
   ],
 })
