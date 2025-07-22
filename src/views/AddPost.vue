@@ -51,7 +51,7 @@ export default {
                 title: this.title,
                 content: this.content
             }
-            axios.post(`${this.server_addr}/api/posts`, data )
+            axios.post(`${this.server_addr}/api/posts`,  data )
             .then((res)=>{
                 this.isLoading=false;
                 if(res.data.status=="success"){

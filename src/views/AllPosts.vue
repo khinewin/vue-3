@@ -37,8 +37,13 @@ export default {
                 server_addr: "http://192.168.1.4:8000",
                 posts:[],
                 isLoading: false,
-                msg:null
+                msg:null,
+                token:null,
             }
+        },
+        created(){
+            let localToken=localStorage.getItem("token");
+            this.token=localToken;
         },
         mounted(){
             this.fetchPosts();
@@ -68,7 +73,11 @@ export default {
             },
             fetchPosts(){
                 this.isLoading=true;
-                axios.get(`${this.server_addr}/api/posts`)
+                axios.get(`${this.server_addr}/api/posts`, {
+                    headers : {
+                        Authorization : `Bearer ${this.token}`
+                    }
+                })
                 .then((res)=>{
                     this.posts=res.data;
                     this.isLoading=false;

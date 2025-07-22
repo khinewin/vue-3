@@ -36,6 +36,7 @@ export default {
         }
     },
 
+    
     methods:{
         doSignin(){
             if(!this.user.email || !this.user.password){
@@ -45,6 +46,9 @@ export default {
             axios.post(`${this.server_addr}/api/create/token`, this.user)
             .then((res)=>{
                 console.log(res);
+                if(res.status===201){
+                    localStorage.setItem("token", res.data.token);
+                }
             })
             .catch((err)=>{
                 console.log(err)
