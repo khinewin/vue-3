@@ -1,5 +1,6 @@
 <template lang="">
     <div>
+        <Navbar></Navbar>
         <div v-if="error">{{error}}</div>
         <div v-if="msg">{{msg}}</div>
         <h1>Signup new user account</h1>
@@ -23,8 +24,12 @@
     </div>
 </template>
 <script>
+    import Navbar from "@/views/Navbar.vue"
     import axios from "axios";
 export default {
+    components:{
+        Navbar
+    },
     data(){
         return{
             server_addr: "http://192.168.1.4:8000",

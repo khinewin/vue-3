@@ -1,5 +1,6 @@
 <template lang="">
     <div>
+        <Navbar></Navbar>
         <div v-if="error">{{error}}</div>
             <form @submit.prevent="doSignin">
                 <div>
@@ -18,7 +19,11 @@
 </template>
 <script>
     import axios from 'axios'
+    import Navbar from "@/views/Navbar.vue"
 export default {
+    components:{
+        Navbar
+    },
     
     data(){
         return{
