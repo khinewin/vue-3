@@ -1,15 +1,50 @@
 <template lang="">
     <div>
-        <h1>Home</h1>
-        <button @click="goAddPost">Add Post</button>
-        <br>
-        <button @click="goGetAllPosts">Get All Posts</button>
+        <div v-if="error">{{error}}</div>
+            <form @submit.prevent="doSignin">
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" v-model="user.email">
+                </div>
+                <div >
+                    <label for="password">Password</label>
+                    <input type="password" id="password" v-model="user.password">
+                </div>
+                <div>
+                    <button type="submit">Signin</button>
+                </div>
+            </form>
     </div>
 </template>
 <script>
+    import axios from 'axios'
 export default {
     
+    data(){
+        return{
+            server_addr:"http://192.168.1.4:8000",
+            error:null,
+            user : {
+                email: "",
+                password:""
+            }
+        }
+    },
+
     methods:{
+        doSignin(){
+            if(!this.user.email || !this.user.password){
+                this.error="Please fill all input.";
+                return true;
+            }
+            axios.post(`${this.server_addr}/api/create/token`, this.user)
+            .then((res)=>{
+                console.log(res);
+            })
+            .catch((err)=>{
+                console.log(err)
+            });
+        },
         goAddPost(){
             this.$router.push({name: 'AddPost'});
         },
